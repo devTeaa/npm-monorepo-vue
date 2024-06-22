@@ -11,6 +11,7 @@
     "type-check": "vue-tsc --build --force"
   },
   "dependencies": {
-    "vue": "3.3.0"
+    "vite-plugin-externals": "^0.6.2",
+    "vue": "3.4.30"
   }
 }

@@ -1,5 +1,12 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { computed } from 'vue'
+import { useRoute, RouterLink, RouterView } from 'vue-router'
+
+const route = useRoute()
+
+const isCollab = computed(() => {
+  return route.fullPath.includes('/slave')
+})
 </script>
 
 <template>
@@ -13,7 +20,15 @@ import { RouterLink, RouterView } from 'vue-router'
     </div>
   </header>
 
+  <div>Monorepo setup</div>
+
   <RouterView />
+
+  <component
+    :is="'script'"
+    :type="'module'"
+    :src="'http://localhost:5181/src/main.ts'"
+  ></component>
 </template>
 
 <style scoped></style>
