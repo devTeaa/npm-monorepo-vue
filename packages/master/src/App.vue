@@ -1,11 +1,17 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useRoute, RouterLink, RouterView } from 'vue-router'
 
 const route = useRoute()
 
-const isCollab = computed(() => {
-  return route.fullPath.includes('/slave')
+const collabJs = ref('')
+
+// const isCollab = computed(() => {
+//   return route.fullPath.includes('/slave')
+// })
+
+onMounted(() => {
+  collabJs.value = 'http://localhost:9991/assets/index-slave.fJLqRhpf.js'
 })
 </script>
 
@@ -24,10 +30,15 @@ const isCollab = computed(() => {
 
   <RouterView />
 
-  <component
+  <!-- <component
     :is="'script'"
     :type="'module'"
     :src="'http://localhost:5181/src/main.ts'"
+  ></component> -->
+  <component
+    :is="'script'"
+    :type="'module'"
+    :src="'http://localhost:9991/assets/index-slave.fJLqRhpf.js'"
   ></component>
 </template>
 
